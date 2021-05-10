@@ -1,0 +1,17 @@
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <Authorizing>
+                    <div>  ----- AUTHORIZING -------</div>
+                </Authorizing>
+                <NotAuthorized>
+                    <ChromWeakPasswordCheckBug.Pages.Login></ChromWeakPasswordCheckBug.Pages.Login>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <div>  ----- NOT FOUND -------</div>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>

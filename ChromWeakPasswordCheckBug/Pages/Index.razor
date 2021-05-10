@@ -1,0 +1,19 @@
+﻿@page "/"
+@attribute [Authorize]
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<Test> </Test>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("__INDEX:OnInit");
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine("__INDEX:AfterRender");
+        base.OnAfterRender(firstRender);
+    }
+}

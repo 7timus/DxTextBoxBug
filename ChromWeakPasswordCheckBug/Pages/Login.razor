@@ -1,0 +1,33 @@
+﻿<EditForm class="login-form" Model="@Model" OnValidSubmit="@OnValidSubmitAsync">
+    <DevExpress.Blazor.DxTextBox @bind-Text="@Model.Email" />
+    <DevExpress.Blazor.DxTextBox Password @bind-Text="@Model.Pw" />
+    <DevExpress.Blazor.DxButton SubmitFormOnClick="true" Text="Login" CssClass="login-button" />
+</EditForm>
+@code {
+    public class LoginModel
+    {
+        public string Pw { get; set; } = "pw";
+
+        public string Email { get; set; } = "email@email.com";
+    }
+
+    public LoginModel Model { get; set; } = new LoginModel();
+
+    [Inject] NavigationManager NavManager { get; set; }
+
+    // same instance as AuthStateProvider
+    [Inject] ILogonHandler LogonHandler { get; set; }
+
+    public async Task OnValidSubmitAsync()
+    {
+        await Task.Delay(1);
+
+        if (Model.Pw != "pw")
+        {
+            Console.WriteLine("WRONG PW - ENTER 'pw'");
+            return;
+        }
+
+        await LogonHandler.LogonAsync();
+    }
+}

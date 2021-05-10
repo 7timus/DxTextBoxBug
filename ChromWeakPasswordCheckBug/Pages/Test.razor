@@ -1,0 +1,14 @@
+﻿TEST
+@code {
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("__TEST:OnInit");
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine("__TEST:AfterRender");
+        base.OnAfterRender(firstRender);
+    }
+}
